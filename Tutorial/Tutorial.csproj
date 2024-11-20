@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="mod.yaml" CopyToOutputDirectory="Always" />
+    <None Include="mod_info.yaml" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+</Project>

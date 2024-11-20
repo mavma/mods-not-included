@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}",
+        "-property:GenerateFullPaths=true",
+        "-consoleLoggerParameters:NoSummary;ForceConsoleColor",
+        "-p:Configuration=Debug",
+        "-p:Platform=\"Any CPU\""
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "dotnet: build"
+    }
+  ]
+}

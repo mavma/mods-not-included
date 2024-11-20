@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <Import Condition="!Exists('Directory.Build.props.user')" Project="Directory.Build.props.default" />
+
+  <ItemDefinitionGroup>
+    <!-- modified default values for references -->
+    <Reference Private="False" />
+    <ProjectReference Private="True" />
+  </ItemDefinitionGroup>
+
+  <PropertyGroup>
+    <!-- msbuild properties -->
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Optimize>true</Optimize>
+    <Configurations>Debug</Configurations>
+    <!-- custom properties -->
+    <UsePublicAssemblies>true</UsePublicAssemblies>
+    <ILRepack>false</ILRepack>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="$(GameFolder)/Assembly-CSharp.dll" />
+    <Reference Include="$(GameFolder)/Assembly-CSharp-firstpass.dll" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UsePublicAssemblies)' == 'true'">
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
+    <Reference Include="$(GameFolder)/Assembly-CSharp*.dll" Publicize="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="$(GameFolder)/0Harmony.dll" />
+    <Reference Include="$(GameFolder)/Newtonsoft.Json.dll" />
+    <Reference Include="$(GameFolder)/UnityEngine.CoreModule.dll" />
+    <Reference Include="$(GameFolder)/UnityEngine.dll" />
+    <Reference Include="$(GameFolder)/UnityEngine.UI.dll" />
+  </ItemGroup>
+
+</Project>

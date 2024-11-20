@@ -1,0 +1,7 @@
+{
+  "xml.format.emptyElements": "collapse",
+  "xml.format.joinCommentLines": true,
+  "xml.format.joinContentLines": true,
+  "xml.format.maxLineWidth": 120,
+  "xml.format.preserveAttributeLineBreaks": false
+}
