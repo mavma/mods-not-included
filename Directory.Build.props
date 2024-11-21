@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project>
 
   <Import Condition="!Exists('Directory.Build.props.user')" Project="Directory.Build.props.default" />
@@ -6,8 +6,8 @@
 
   <ItemDefinitionGroup>
     <!-- modified default values for references -->
-    <Reference Private="False" />
-    <ProjectReference Private="True" />
+    <Reference Private="false" />
+    <ProjectReference Private="true" />
   </ItemDefinitionGroup>
 
   <PropertyGroup>
@@ -29,7 +29,7 @@
 
   <ItemGroup Condition="'$(UsePublicAssemblies)' == 'true'">
     <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
-    <Reference Include="$(GameFolder)/Assembly-CSharp*.dll" Publicize="true" />
+    <Reference Update="$(GameFolder)/Assembly-CSharp*.dll" Publicize="true" />
   </ItemGroup>
 
   <ItemGroup>
