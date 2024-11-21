@@ -1,99 +1,55 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<!-- Build Properties -->
-	<PropertyGroup>
-		<TargetFramework>net48</TargetFramework>
-		<LangVersion>preview</LangVersion>
-		<Configurations>Debug</Configurations>
-		<AssemblyName>TrueTiles</AssemblyName>
-		<RootNamespace>TrueTiles</RootNamespace>
-		<IsMod>true</IsMod>
-		<GenerateMetadata>true</GenerateMetadata>
-		<FUtility>true</FUtility>
-		<IsPacked>true</IsPacked>
-		<DefineConstants>DATAGEN</DefineConstants>
-		<UsePublicised>true</UsePublicised>
-		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-	</PropertyGroup>
+  <PropertyGroup>
+    <Configurations>Debug</Configurations>
+    <AssemblyName>TrueTiles</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <UsePublicAssemblies>true</UsePublicAssemblies>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <WriteMetadataFiles>true</WriteMetadataFiles>
+    <Install>true</Install>
+    <!-- Generate tile JSON files on game launch -->
+    <DefineConstants>DATAGEN</DefineConstants>
+  </PropertyGroup>
 
-	<!-- General Package Properties -->
-	<PropertyGroup>
-		<PackageId>TrueTiles</PackageId>
-		<Version>1.3.1.0</Version>
-		<Authors>Aki</Authors>
-		<Copyright>2021-2024 Aki</Copyright>
-		<RepositoryUrl>https://github.com/aki-art/ONI-Mods</RepositoryUrl>
-	</PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Futility/FUtility.csproj" />
+  </ItemGroup>
 
-	<!-- Mod Info -->
-	<PropertyGroup>
-		<ModName>True Tiles</ModName>
-		<ModDescription>Texture override for tiles.</ModDescription>
-		<SupportedContent>ALL</SupportedContent>
-		<MinimumSupportedBuild>525812</MinimumSupportedBuild>
-		<APIVersion>2</APIVersion>
-	</PropertyGroup>
+  <PropertyGroup>
+    <PackageId>TrueTiles</PackageId>
+    <Version>1.3.1.0</Version>
+    <Authors>Aki</Authors>
+    <Copyright>2021-2024 Aki</Copyright>
+    <RepositoryUrl>https://github.com/aki-art/ONI-Mods</RepositoryUrl>
+  </PropertyGroup>
 
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<OutDir>bin</OutDir>
-	</PropertyGroup>
-	<ItemGroup Condition="'$(UsePublicised)' == 'true'">
+  <ItemGroup>
+    <ModMetadata Include="True Tiles (dev)">
+      <Description>Texture override for tiles</Description>
+      <StaticID>mavma.$(AssemblyName)</StaticID>
+      <SupportedContent>ALL</SupportedContent>
+      <MinimumSupportedBuild>642443</MinimumSupportedBuild>
+      <Version>$(Version)</Version>
+      <APIVersion>2</APIVersion>
+    </ModMetadata>
+  </ItemGroup>
 
-		<Reference Include="Assembly-CSharp">
-			<HintPath>$(PublicisedFolder)/Assembly-CSharp_public.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
+  <ItemGroup>
+    <Reference Include="$(GameFolder)/UnityEngine.ImageConversionModule.dll" />
+    <Reference Include="$(GameFolder)/UnityEngine.IMGUIModule.dll" />
+    <Reference Include="$(GameFolder)/Unity.TextMeshPro.dll" />
+    <Reference Include="$(GameFolder)/UnityEngine.AssetBundleModule.dll" />
+    <Reference Include="$(GameFolder)/UnityEngine.UI.dll" />
+    <Reference Include="$(GameFolder)/UnityEngine.UIModule.dll" />
+  </ItemGroup>
 
-		<Reference Include="Assembly-CSharp-firstpass">
-			<HintPath>$(PublicisedFolder)/Assembly-CSharp-firstpass_public.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
+  <!-- TrueTiles has an assets file that doesn't seem to live in the git repo - here it's copied over from the one installed by Steam -->
+  <Target Name="CopyAssets" AfterTargets="Install" Condition="'$(Install)' == 'true'">
+    <ItemGroup>
+      <TTSteamAssets Include="$(ModsFolder)/Steam/2815406414/assets/truetilesassets" />
+    </ItemGroup>
+    <Copy SourceFiles="@(TTSteamAssets)" DestinationFolder="$(InstallFolder)/$(AssemblyName)/assets/"/>
+  </Target>
 
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(UsePublicised)' == 'false'">
-
-		<Reference Include="Assembly-CSharp">
-			<HintPath>$(GameLibsFolder)/Assembly-CSharp.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-
-		<Reference Include="Assembly-CSharp-firstpass">
-			<HintPath>$(GameLibsFolder)/Assembly-CSharp-firstpass.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-
-	</ItemGroup>
-
-	<ItemGroup>
-		<Reference Include="UnityEngine.ImageConversionModule">
-			<HintPath>..\..\..\..\..\Programs\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-
-		<Reference Include="UnityEngine.IMGUIModule">
-			<HintPath>..\..\..\..\..\Programs\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		
-		<Reference Include="Unity.TextMeshPro">
-			<HintPath>D:\Programs\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\Unity.TextMeshPro.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="UnityEngine.AssetBundleModule">
-			<HintPath>D:\Programs\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		
-		<Reference Include="UnityEngine.UI">
-			<HintPath>D:\Programs\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\UnityEngine.UI.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		
-		<Reference Include="UnityEngine.UIModule">
-			<HintPath>D:\Programs\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\UnityEngine.UIModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-	</ItemGroup>
-	
 </Project>

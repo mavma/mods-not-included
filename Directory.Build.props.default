@@ -4,6 +4,6 @@
     <SteamFolder>C:/Program Files (x86)/Steam</SteamFolder>
     <GameFolder>$(SteamFolder)/steamapps/common/OxygenNotIncluded/OxygenNotIncluded_Data/Managed</GameFolder>
     <ModsFolder>$(UserProfile)/Documents/Klei/OxygenNotIncluded/mods</ModsFolder>
-    <InstallFolder>$(GameModsFolder)/Local</InstallFolder>
+    <InstallFolder>$(ModsFolder)/Local</InstallFolder>
   </PropertyGroup>
 </Project>

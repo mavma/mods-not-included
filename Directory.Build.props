@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
 
   <Import Condition="!Exists('Directory.Build.props.user')" Project="Directory.Build.props.default" />
@@ -16,10 +16,11 @@
     <TargetFramework>net48</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Optimize>true</Optimize>
-    <Configurations>Debug</Configurations>
+    <DebugType>embedded</DebugType>
     <!-- custom properties -->
     <UsePublicAssemblies>false</UsePublicAssemblies>
-    <ILRepack>false</ILRepack>
+    <WriteMetadataFiles>false</WriteMetadataFiles>
+    <Install>false</Install>
   </PropertyGroup>
 
   <ItemGroup>

@@ -7,4 +7,37 @@
     </PropertyGroup>
   </Target>
 
+  <Target Name="WriteMetadataFiles" BeforeTargets="BeforeBuild" Condition="'$(WriteMetadataFiles)' == 'true'">
+    <PropertyGroup>
+      <ModContent>
+<![CDATA[
+title: %(ModMetadata.Identity)
+description: %(ModMetadata.Description)
+staticID: %(ModMetadata.StaticID)
+]]>
+      </ModContent>
+      <ModInfoContent>
+<![CDATA[
+supportedContent: %(ModMetadata.SupportedContent)
+minimumSupportedBuild: %(ModMetadata.MinimumSupportedBuild)
+version: %(ModMetadata.Version)
+APIVersion: %(ModMetadata.APIVersion)
+]]>
+      </ModInfoContent>
+    </PropertyGroup>
+
+    <WriteLinesToFile File="$(TargetDir)/mod.yaml" Lines="$(ModContent)" Overwrite="true" />
+    <WriteLinesToFile File="$(TargetDir)/mod_info.yaml" Lines="$(ModInfoContent)" Overwrite="true" />
+  </Target>
+
+  <Target Name="Install" AfterTargets="AfterBuild" Condition="'$(Install)' == 'true'">
+    <ItemGroup>
+      <InstallFiles Include="$(TargetDir)/$(AssemblyName).dll" />
+      <InstallFiles Include="$(TargetDir)/FUtility.dll" />
+      <InstallFiles Include="$(TargetDir)/mod.yaml" />
+      <InstallFiles Include="$(TargetDir)/mod_info.yaml" />
+    </ItemGroup>
+    <Copy SourceFiles="@(InstallFiles)" DestinationFolder="$(InstallFolder)/$(AssemblyName)"/>
+  </Target>
+
 </Project>

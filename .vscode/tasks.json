@@ -10,7 +10,8 @@
         "-property:GenerateFullPaths=true",
         "-consoleLoggerParameters:NoSummary;ForceConsoleColor",
         "-p:Configuration=Debug",
-        "-p:Platform=\"Any CPU\""
+        "-p:Platform=\"Any CPU\"",
+        "-bl"
       ],
       "group": {
         "kind": "build",
