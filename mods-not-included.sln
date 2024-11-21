@@ -5,6 +5,12 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tutorial", "Tutorial\Tutorial.csproj", "{CAA726E8-8852-4FA2-B2B5-E2088A8D7610}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aki-art", "aki-art", "{6532FDB3-3DD5-4B35-8AAF-99BD68A45FD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ONI-Mods", "ONI-Mods", "{4C82744F-06D6-4F60-BC8D-56E3637A80FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FUtility", "aki-art\ONI-Mods\Futility\FUtility.csproj", "{50EFB523-4E2F-487D-9B74-0E062E9D3F71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,11 +21,19 @@ Global
 		{CAA726E8-8852-4FA2-B2B5-E2088A8D7610}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAA726E8-8852-4FA2-B2B5-E2088A8D7610}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAA726E8-8852-4FA2-B2B5-E2088A8D7610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50EFB523-4E2F-487D-9B74-0E062E9D3F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50EFB523-4E2F-487D-9B74-0E062E9D3F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50EFB523-4E2F-487D-9B74-0E062E9D3F71}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{50EFB523-4E2F-487D-9B74-0E062E9D3F71}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3DD8F1A8-CDB8-40CB-946B-92353AFAA0EE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4C82744F-06D6-4F60-BC8D-56E3637A80FC} = {6532FDB3-3DD5-4B35-8AAF-99BD68A45FD1}
+		{50EFB523-4E2F-487D-9B74-0E062E9D3F71} = {4C82744F-06D6-4F60-BC8D-56E3637A80FC}
 	EndGlobalSection
 EndGlobal

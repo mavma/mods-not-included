@@ -18,7 +18,7 @@
     <Optimize>true</Optimize>
     <Configurations>Debug</Configurations>
     <!-- custom properties -->
-    <UsePublicAssemblies>true</UsePublicAssemblies>
+    <UsePublicAssemblies>false</UsePublicAssemblies>
     <ILRepack>false</ILRepack>
   </PropertyGroup>
 
