@@ -44,7 +44,7 @@ namespace FUtility.FUI
 
 			foreach (Transform child in parent)
 			{
-				Log.Debuglog(string.Concat(Enumerable.Repeat('-', level)) + child.name);
+				Log.Debug(string.Concat(Enumerable.Repeat('-', level)) + child.name);
 				ListChildren(child, level + 1);
 			}
 		}

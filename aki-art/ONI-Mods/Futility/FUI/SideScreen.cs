@@ -71,7 +71,7 @@ namespace FUtility.FUI
 		{
 			foreach (var screen in screens)
 			{
-				Log.Debuglog(screen.name, screen?.screenPrefab.GetType());
+				Log.Debug(screen.name, screen?.screenPrefab.GetType());
 			}
 
 			var result = screens.Find(s => s.name == name).screenPrefab;
@@ -86,7 +86,7 @@ namespace FUtility.FUI
 		{
 			foreach (var screen in screens)
 			{
-				Log.Debuglog(screen.name, screen.GetType());
+				Log.Debug(screen.name, screen.GetType());
 			}
 
 			var result = screens.Find(s => s?.screenPrefab.GetType() == type)?.screenPrefab;
