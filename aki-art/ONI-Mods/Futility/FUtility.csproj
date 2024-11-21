@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net471</TargetFramework>
+	  <UsePublicised>false</UsePublicised>
+	  <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Patches\**" />
+    <EmbeddedResource Remove="Patches\**" />
+    <None Remove="Patches\**" />
+  </ItemGroup>
+
+
+	<ItemGroup>
+		<Reference Include="UnityEngine.TextRenderingModule">
+			<HintPath>..\..\..\..\..\Programs\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+			<CopyLocal>False</CopyLocal>
+		</Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(GameLibsFolder)\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+	  
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>$(GameLibsFolder)\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+	  
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(GameLibsFolder)\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+	  
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(GameLibsFolder)\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+	  
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameLibsFolder)\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+	  
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(GameLibsFolder)\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+	  
+	  <Reference Include="FMODUnity">
+		  <HintPath>$(GameLibsFolder)\FMODUnity.dll</HintPath>
+		  <Private>False</Private>
+	  </Reference>
+  </ItemGroup>
+
+</Project>

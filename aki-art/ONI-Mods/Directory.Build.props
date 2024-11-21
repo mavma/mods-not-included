@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+	<PropertyGroup>
+		<SteamFolder>D:\Programs\Steam</SteamFolder>
+		<GameLibsFolder>$(SteamFolder)\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameLibsFolder>
+		<PublicisedFolder>D:\Modding\OxygenNotIncluded\PublicisedLib</PublicisedFolder>
+		<ModFolder>$(UserProfile)\Documents\Klei\OxygenNotIncluded\mods\dev</ModFolder>
+		<FUtilityPath>$(UserProfile)\source\repos\FUtility\FUtility\bin\Debug\net48\FUtility.dll</FUtilityPath>
+		<ClearOutputDirectory>True</ClearOutputDirectory>
+		<Optimize>true</Optimize>
+		<UsePublicised>false</UsePublicised>
+		<SubFolder>\archived_versions\test\</SubFolder>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<WhattaBlast>549456</WhattaBlast>
+		<QoL2023June>560597</QoL2023June>
+		<PackedSnacks>581003</PackedSnacks>
+		<QoL2024Feb>596100</QoL2024Feb>
+		<FrostyPlanetPack>616718</FrostyPlanetPack>
+		<QoL2024Nov>640445</QoL2024Nov>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Archive)' == 'true' ">
+	</PropertyGroup>
+	
+	<ItemGroup Condition="'$(UsePublicised)' == 'true'">
+		
+		<Reference Include="Assembly-CSharp">
+			<HintPath>$(PublicisedFolder)/Assembly-CSharp_public.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+
+		<Reference Include="Assembly-CSharp-firstpass">
+			<HintPath>$(PublicisedFolder)/Assembly-CSharp-firstpass_public.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(UsePublicised)' == 'false'">
+
+		<Reference Include="Assembly-CSharp">
+			<HintPath>$(GameLibsFolder)/Assembly-CSharp.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+
+		<Reference Include="Assembly-CSharp-firstpass">
+			<HintPath>$(GameLibsFolder)/Assembly-CSharp-firstpass.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+
+	</ItemGroup>
+
+	<ItemGroup>
+
+		<Reference Include="0Harmony">
+			<HintPath>$(GameLibsFolder)/0Harmony.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		
+		<Reference Include="UnityEngine">
+			<HintPath>$(GameLibsFolder)/UnityEngine.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(GameLibsFolder)/UnityEngine.CoreModule.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>$(GameLibsFolder)/Newtonsoft.Json.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(FUtility)' == 'true' ">
+		<ProjectReference Include="..\FUtility\FUtility.csproj">
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</ProjectReference>
+	</ItemGroup>
+	
+	<ItemGroup Condition="'$(FUtility2)' == 'true' ">
+		<Reference Include="FUtility">
+			<HintPath>$(FUtilityPath)</HintPath>
+			<Private>True</Private>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(IsPacked)' == 'true'">
+		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
+	</ItemGroup>
+
+</Project>
